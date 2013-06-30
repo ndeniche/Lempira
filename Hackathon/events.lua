@@ -1,13 +1,4 @@
---
--- Project: Test
--- Description: 
---
--- Version: 1.0
--- Managed with http://CoronaProjectManager.com
---
--- Copyright 2013 . All Rights Reserved.
--- 
---Events--Lempira Actionslocal beginX 
+local beginX 
 local beginY  
 local endX  
 local endY 
@@ -50,4 +41,4 @@ function swipe(event)
         end
 end
  
-Runtime:addEventListener("touch", swipe)
+Runtime:addEventListener("touch", swipe)
