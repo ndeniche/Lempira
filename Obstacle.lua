@@ -10,9 +10,6 @@ local obstacle_mt = { __index = obstacle }	-- metatable
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
-local function getLempira( realYears )	-- local; only visible in this module
-	return realYears * 7
-end
 
 -------------------------------------------------
 -- PUBLIC FUNCTIONS

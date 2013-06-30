@@ -1,4 +1,3 @@
---
 -- Project: Lempira
 -- Description: 
 --
@@ -6,12 +5,12 @@
 -- Managed with http://CoronaProjectManager.com
 --
 -- Copyright 2013 . All Rights Reserved.
--- 
 
 module(..., package.seeall)
 
 local director = require("director")
 local lempira = require("Lempira")
+local ls = require("LempiraSprites")
 
 new = function(params)
 
@@ -25,8 +24,8 @@ new = function(params)
 
 	local heroe = lempira.new("run")	
 
-	local body = RunBody(heroe)
-	local legs = RunLegs(heroe)	
+	local body = ls:RunBody(heroe)
+	local legs = ls:RunLegs(heroe)	
 
 	gameDisplay:insert(sceneLayer1)
 	gameDisplay:insert(sceneLayer2)
@@ -55,55 +54,5 @@ new = function(params)
 	return gameDisplay
 end
 
-
-function RunBody(lempira)
-
-	local options = {
-	   width = 262,
-	   height = 233,
-	   numFrames = 4,
-	   sheetContentWidth=524, 
-	   sheetContentHeight=466
-	}		
-
-	local runBodyImageSheet = graphics.newImageSheet(lempira:getBody(), options)		
-
-	local sequenceData = {
-   		{ name = "normalRunBody", start=1, count=4, time=250},
-		{ name = "fastRunBody", start=1, count=4, time=125}
-	}
-
-	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
-	
-	spriteInstance.x = 512
-	spriteInstance.y = 383	
-		
-	return spriteInstance
-end
-
-function RunLegs(lempira)
-
-	local options = {
-	   width = 262,
-	   height = 233,
-	   numFrames = 4,
-	   sheetContentWidth=524, 
-	   sheetContentHeight=466
-	}		
-
-	local runLegsImageSheet = graphics.newImageSheet(lempira:getLegs(), options)		
-
-	local sequenceData = {
-   		{ name = "normalRunLegs", start=1, count=4, time=250},
-		{ name = "fastRunLegs", start=1, count=4, time=125}
-	}
-
-	local spriteInstance = display.newSprite(runLegsImageSheet, sequenceData)
-		
-	spriteInstance.x = 512
-	spriteInstance.y = 545	
-		
-	return spriteInstance
-end
 
 timer.performWithDelay(1, update, -1)

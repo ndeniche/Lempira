@@ -42,7 +42,7 @@ function Lempira:getLegs()
 end
 -------------------------------------------------
 function Lempira:getJump()
-	print( " jump." )
+	return "assets/images/characters/lempira_salta.png"
 end
 -------------------------------------------------
 function Lempira:getShoot()
