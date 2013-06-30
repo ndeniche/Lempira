@@ -25,7 +25,7 @@ function LempiraSprites:RunLegs(lempira)
 	local runLegsImageSheet = graphics.newImageSheet(lempira:getLegs(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunLegs", start=1, count=4, time=350},
+   		{ name = "normalRunLegs", start=1, count=4, time=1000},
 		{ name = "fastRunLegs", start=1, count=4, time=125}
 	}
 
@@ -52,7 +52,7 @@ function LempiraSprites:RunBody(lempira)
 	local runBodyImageSheet = graphics.newImageSheet(lempira:getBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunBody", start=1, count=4, time=350},
+   		{ name = "normalRunBody", start=1, count=4, time=1000},
 		{ name = "fastRunBody", start=1, count=4, time=125}
 	}
 

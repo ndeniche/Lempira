@@ -24,11 +24,11 @@ new = function(params)
 	local backgroundDisplay = display.newGroup()
 
 	local sceneLayer1 = display.newImageRect("assets/images/sceneLayer1.png", 4092, 768)
-	sceneLayer1.x = 2048
+	sceneLayer1.x = 2048 - 160
 	sceneLayer1.y = 334
 
 	local sceneLayer2 = display.newImage("assets/images/sceneLayer2.png")
-	sceneLayer2.x = 1024
+	sceneLayer2.x = 512
 	sceneLayer2.y = 440
 
 	local sceneLayer3 = display.newImage("assets/images/sceneLayer3.png")
@@ -139,16 +139,16 @@ new = function(params)
 			sceneLayer1.x = 2048 - 4
 		end
 
-		if(sceneLayer2.x < -1024) then
-			sceneLayer2.x = 1024
+		if(sceneLayer2.x < -1536) then
+			sceneLayer2.x = 512
 		end
 
-		if(sceneLayer4.x < 450) then
+		if(sceneLayer4.x < 140) then
 			sceneLayer4.x = 800
 		end
 
-		if(sceneLayer5.x < 0) then
-			sceneLayer5.x = 770
+		if(sceneLayer5.x < -680) then
+			sceneLayer5.x = 1350
 		end	
 
 	end
