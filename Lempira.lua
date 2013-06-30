@@ -38,21 +38,23 @@ end
 function lempira:runBody()
 	local options = {
 	   width = 262,
-	   height = 384,
+	   height = 233,
 	   numFrames = 4,
-	   sheetContentWidth=1024, 
-	   sheetContentHeight=1024
+	   sheetContentWidth=525, 
+	   sheetContentHeight=447
 	}
-	return graphics.newImageSheet( "assets/images/health_bar.png", options )
+	return graphics.newImageSheet( "assets/images/characters/lempira_tronco.png", options )
 end
 -------------------------------------------------
 function lempira:runLegs()
 	local options = {
 	   width = 262,
-	   height = 384,
-	   numFrames = 4
+	   height = 202.8,
+	   numFrames = 4,
+	   sheetContentWidth=517, 
+	   sheetContentHeight=407
 	}
-	return graphics.newImageSheet( "images/health_bar.png", options )
+	return graphics.newImageSheet( "assets/images/characters/lempira_piernas.png", options )
 end
 -------------------------------------------------
 function lempira:jump()
