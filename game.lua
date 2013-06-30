@@ -12,9 +12,9 @@ module(..., package.seeall)
 
 local director = require("director")
 local lempira = require("Lempira")
-local LempiraSprite = require("LempiraSprites")
 
 new = function(params)
+
 	local gameDisplay = display.newGroup()
 
 	local sceneLayer1 = display.newImage("assets/images/sceneLayer1.png")
@@ -23,20 +23,21 @@ new = function(params)
 	local sceneLayer2 = display.newImage("assets/images/sceneLayer2.png")
 	sceneLayer2.x = 0
 
+	local heroe = lempira.new("run")	
 
-	local heroe = lempira.new("run")
-	local ls = LempiraSprite.new()
-
-	--local body = RunBody(heroe)
-	local body = ls:RunBody(heroe)	
+	local body = RunBody(heroe)
+	local legs = RunLegs(heroe)	
 
 	gameDisplay:insert(sceneLayer1)
 	gameDisplay:insert(sceneLayer2)
 	gameDisplay:insert(body)
+	gameDisplay:insert(legs)
 
-	body:setSequence("normalRunLegs")
+	body:setSequence("normalRunBody")	
 	body:play()	
 
+	legs:setSequence("normalRunLegs")
+	legs:play()
 
 	local function update(event)
 		updateSceneLayers()
@@ -58,20 +59,18 @@ end
 function RunBody(lempira)
 
 	local options = {
-	   width = 238,
-	   height = 220,
-	   numFrames = 4,	   
-	   --sourceWidth=524, 
-	   --sourceHeight=447
-	   sourceWidth=476, 
-	   sourceHeight=440
+	   width = 262,
+	   height = 233,
+	   numFrames = 4,
+	   sheetContentWidth=524, 
+	   sheetContentHeight=466
 	}		
 
 	local runBodyImageSheet = graphics.newImageSheet(lempira:getBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunLegs", start=1, count=4, time=250},
-		{ name = "fastRunLegs", start=1, count=4, time=125}
+   		{ name = "normalRunBody", start=1, count=4, time=250},
+		{ name = "fastRunBody", start=1, count=4, time=125}
 	}
 
 	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
@@ -82,29 +81,27 @@ function RunBody(lempira)
 	return spriteInstance
 end
 
-
 function RunLegs(lempira)
 
 	local options = {
 	   width = 262,
-	   height = 202.8,
+	   height = 233,
 	   numFrames = 4,
-	   sheetContentWidth=517, 
-	   sheetContentHeight=407
+	   sheetContentWidth=524, 
+	   sheetContentHeight=466
 	}		
 
-	local runLegsImageSheet = graphics.newImageSheet("assets/images/characters/lempira_tronco.png", options)		
+	local runLegsImageSheet = graphics.newImageSheet(lempira:getLegs(), options)		
 
 	local sequenceData = {
    		{ name = "normalRunLegs", start=1, count=4, time=250},
 		{ name = "fastRunLegs", start=1, count=4, time=125}
 	}
 
-	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
-	
-	--spriteInstance:setReferencePoint(display.CenterLeftReferencePoint)	
+	local spriteInstance = display.newSprite(runLegsImageSheet, sequenceData)
+		
 	spriteInstance.x = 512
-	spriteInstance.y = 383	
+	spriteInstance.y = 545	
 		
 	return spriteInstance
 end
