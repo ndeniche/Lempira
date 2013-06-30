@@ -16,6 +16,10 @@ new = function(params)
 	local gameDisplay = display.newGroup()
 
 	local sceneLayer1 = display.newImage("assets/images/sceneLayer1.png")
+	sceneLayer1.x = 0
+
+	local sceneLayer2 = display.newImage("assets/images/sceneLayer2.png")
+	sceneLayer2.x = 0
 
 	local function update(event)
 		updateSceneLayers()
@@ -33,4 +37,4 @@ new = function(params)
 	return gameDisplay
 end
 
-	timer.performWithDelay(1, update, -1)
+timer.performWithDelay(1, update, -1)
