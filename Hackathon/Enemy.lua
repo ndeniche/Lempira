@@ -1,9 +1,9 @@
 -------------------------------------------------
--- Obstacle.lua
+-- Enemy.lua
 -------------------------------------------------
  
-local obstacle = {}
-local obstacle_mt = { __index = obstacle }	-- metatable
+local enemy = {}
+local enemy_mt = { __index = enemy }	-- metatable
  
 
 -------------------------------------------------
@@ -16,22 +16,32 @@ end
 -------------------------------------------------
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
-function obstacle.new( type )	-- constructor
+function enemy.new( type )	-- constructor
 		
-	local newObstacle = {
+	local newEnemy = {
 		--maya, playa, montana, tegus
 		type = type	or "maya"	
 	}
 	
-	return setmetatable( newObstacle, obstacle_mt )
+	return setmetatable( newEnemy, enemy_mt )
 end
 -------------------------------------------------
-function obstacle:getType()
+function enemy:getType()
 	return self.type
 end
 -------------------------------------------------
-function obstacle:setType(type)
+function enemy:setType(type)
 	self.type = type
 end
 -------------------------------------------------
-return obstacle
+function lempira:run()
+	local options = {
+	   width = 262,
+	   height = 384,
+	   numFrames = 4
+	}
+	return graphics.newImageSheet( "assets/images/health_bar.png", options )
+end
+-------------------------------------------------
+
+return enemy

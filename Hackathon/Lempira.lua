@@ -26,29 +26,26 @@ function lempira.new( body, rightArm, legs, state)	-- constructor
 	
 	return setmetatable( newLempira, lempira_mt )
 end
-
 -------------------------------------------------
-function setState(state)	-- local; only visible in this module
+function setState(state)
 	self.state = state
 end
-
 ------------------------------------------------- 
-function getState()	-- local; only visible in this module
+function getState()
 	return self.state
 end
--------------------------------------------------
- 
+------------------------------------------------- 
 function lempira:runBody()
 	local options = {
 	   width = 262,
 	   height = 384,
-	   numFrames = 4
+	   numFrames = 4,
+	   sheetContentWidth=1024, 
+	   sheetContentHeight=1024
 	}
-	return graphics.newImageSheet( "images/health_bar.png", options )
+	return graphics.newImageSheet( "assets/images/health_bar.png", options )
 end
- 
 -------------------------------------------------
- 
 function lempira:runLegs()
 	local options = {
 	   width = 262,
@@ -57,19 +54,14 @@ function lempira:runLegs()
 	}
 	return graphics.newImageSheet( "images/health_bar.png", options )
 end
- 
 -------------------------------------------------
- 
 function lempira:jump()
 	print( " jump." )
 end
- 
 -------------------------------------------------
- 
 function lempira:shoot()
 	print( "shoot" )
 end
-
 -------------------------------------------------
  
 return lempira
