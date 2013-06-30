@@ -5,6 +5,18 @@
 settings = {
 	orientation =
 	{
-		default = "landscapeRight",		supported = {"landscapeLeft", "landscapeRight"},
-	},
+		default = "landscapeRight",
+		supported = {"landscapeLeft", "landscapeRight"},
+	},
+	iphone =
+    {
+        plist =
+        {
+            UIAppFonts =
+            {
+                "songbird.otf",
+            },
+            UIApplicationExitsOnSuspend = true
+        },
+    },
 }

@@ -6,6 +6,15 @@ local userdata = {}
 local userdata_mt = { __index = userdata }  -- metatable
  
 -------------------------------------------------
+--Constructor
+-------------------------------------------------
+function userdata.new()
+	local userdata = {
+		data = [],
+
+	}
+
+-------------------------------------------------
 --Primary Function
 -------------------------------------------------
 function createTable()
@@ -14,8 +23,8 @@ function createTable()
 	 data = Autostore.data
 
 	-- Add High Score objects to table
-	data['highscores'] ={}
-	objs_branch = data.highscores
+	data['levels'] ={}
+	objs_branch = data.levels
 
 	--Add Open Levels
 	data.openLevel = ""
@@ -28,49 +37,44 @@ end
 
 --------------------------------------------------
 -- Save New Cacao Total
-function saveCacaoTotal(cacaoScore)
+function userdata:saveCacaoTotal(cacaoScore)
 	cacaoScore = cacaoScore
 	data.cacaoTotal = cacaoScore
 end
 
 ---------------------------------------------------
 --Return Cacao Total
-function returnCacaoTotal()
+function userdata:returnCacaoTotal()
 	return data.openLevel
 end
 
 
 ---------------------------------------------------
 --Save Highest Level Open
-function saveOpenLevels(highLevel)
+function userdata:saveOpenLevels(highLevel)
 	highLevel = highLevel
 	data.openLevel = highLevel
 end
 
 ---------------------------------------------------
 --Return Highest Level Open
-function returnOpenLevels()
+function userdata:returnOpenLevels()
 	return data.openLevel
 end
 
 ---------------------------------------------------
 --Save Level High Score
-function saveLevelHighScore(level, highscore)
+function userdata:saveLevelHighScore(level, highscore)
 	local obj
 	level=level
 	highscore=highscore
 
-	obj = {LevelName = level, LevelHighScore = highscore}
+	obj = {LevelNumber = level, LevelHighScore = highscore}
 	objs_branch:insert(obj)
 end
 
 ---------------------------------------------------
 --Return Level High Score
-function returnLevelHighScores(level)
+function userdata:returnLevelHighScores(level)
 	return data.highscores
 end
-
-
-
-
-

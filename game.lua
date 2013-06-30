@@ -13,6 +13,8 @@ local director = require("director")
 local lempira = require("Lempira")
 local ls = require("LempiraSprites")
 local obs = require("Obstacle")
+local score = require("score")
+--local userdata = require("userdata")
 -------------------------------------
 
 new = function(params)
@@ -34,7 +36,7 @@ new = function(params)
 	sceneLayer3.y = 400
 
 	local sceneLayer4 = display.newImage("assets/images/sceneLayer4.png")
-	sceneLayer4.x = 1024
+	sceneLayer4.x = 800
 	sceneLayer4.y = 720
 
 	local pathDisplay = display.newGroup()
@@ -84,6 +86,23 @@ new = function(params)
 	gameDisplay:insert(lempiraDisplay)
 	gameDisplay:insert(frontDisplay)
 
+	--local scoreObject = score.new()
+	local scoreValue = 0
+	local scoreText = display.newText(scoreValue, 624, 0, 400, 80, "songbird", 64)
+	local multiplier = 1;
+
+	local function updateMultiplier()
+		multiplier = multiplier + 1
+	end
+
+	local function updateScore()
+		scoreValue = scoreValue + ( 1 * multiplier)
+		scoreText.text = scoreValue
+	end
+
+	timer.performWithDelay(60000, updateMultiplier, 3)
+	timer.performWithDelay(100, updateScore, -1)
+
 	local function update(event)
 		updateSceneLayers()
 	end
@@ -114,7 +133,7 @@ new = function(params)
 		else
 			getRandomMaya()
 		end
-		sceneLayer5.x = sceneLayer5.x - (20)
+		sceneLayer5.x = sceneLayer5.x - (24)
 
 		if(sceneLayer1.x < -1024) then
 			sceneLayer1.x = 2048 - 4
@@ -124,8 +143,8 @@ new = function(params)
 			sceneLayer2.x = 1024
 		end
 
-		if(sceneLayer4.x < 0) then
-			sceneLayer4.x = 650
+		if(sceneLayer4.x < 450) then
+			sceneLayer4.x = 800
 		end
 
 		if(sceneLayer5.x < 0) then
@@ -154,7 +173,7 @@ new = function(params)
 			legs:setSequence("normalJumpLegs")
 			legs:play()
 
-			timer.performWithDelay(500, landLempira)
+			timer.performWithDelay(800, landLempira)
 --		end
 	end
 
@@ -178,8 +197,8 @@ new = function(params)
 	timer.performWithDelay(1, update, -1)
 
 	local beginX 
-	local beginY  
-	local endX  
+	local beginY 
+	local endX 
 	local endY 
 	 
 	local xDistance  
@@ -225,20 +244,6 @@ new = function(params)
 	        end
 --	        
 	end
-	 
---	 
-	function jump(event)
---	        if event.phase == "began" then
---	                beginX = event.x
---	                beginY = event.y
---	        end
---	        
---	        if event.phase == "ended"  then
---	                endX = event.x
---	                endY = event.y
---	                checkSwipeDirection();
---	        end
-	end
 --	 
 --
 	function OnCollision( event ) 
@@ -252,9 +257,6 @@ new = function(params)
 --	                end
 --	        end
 	end
---
-
-
 
 	return gameDisplay
 end

@@ -71,15 +71,15 @@ function LempiraSprites:JumpLegs(lempira)
 	local options = {
 	   width = 262,
 	   height = 233,
-	   numFrames = 3,
-	   sheetContentWidth=786, 
+	   numFrames = 4,
+	   sheetContentWidth=1048, 
 	   sheetContentHeight=234
 	}		
 
 	local jumpLegsImageSheet = graphics.newImageSheet(lempira:getJumpLegs(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpLegs", start=1, count=3, time=500},
+   		{ name = "normalJumpLegs", start=1, count=3, time=800},
 		{ name = "fastJumpLegs", start=1, count=3, time=125}
 	}
 
@@ -106,7 +106,7 @@ function LempiraSprites:JumpBody(lempira)
 	local jumpBodyImageSheet = graphics.newImageSheet(lempira:getJumpBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpBody", start=1, count=3, time=500},
+   		{ name = "normalJumpBody", start=1, count=3, time=800},
 		{ name = "fastJumpBody", start=1, count=3, time=125}
 	}
 

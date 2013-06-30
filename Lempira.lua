@@ -42,11 +42,11 @@ function Lempira:getState()
 end
 ------------------------------------------------- 
 function Lempira:getBody()	
-	return "assets/images/characters/lempira_tronco.png"
+	return "assets/images/characters/lempira__tronco.png"
 end
 -------------------------------------------------
 function Lempira:getLegs()	
-	return "assets/images/characters/lempira_piernas.png"
+	return "assets/images/characters/lempira__piernas.png"
 end
 -------------------------------------------------
 function Lempira:getJumpLegs()
