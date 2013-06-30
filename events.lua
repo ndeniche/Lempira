@@ -28,7 +28,7 @@ function checkSwipeDirection()
 end
  
  
-function swipe(event)
+function jump(event)
         if event.phase == "began" then
                 beginX = event.x
                 beginY = event.y
@@ -41,4 +41,4 @@ function swipe(event)
         end
 end
  
-Runtime:addEventListener("touch", swipe)
+Runtime:addEventListener("touch", jump)
