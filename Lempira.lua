@@ -5,7 +5,6 @@
 local lempira = {}
 local lempira_mt = { __index = lempira }	-- metatable
  
-
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------

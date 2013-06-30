@@ -1,6 +1,7 @@
 -------------------------------------------------
 -- Obstacle.lua
 -------------------------------------------------
+require("mathlib")
  
 local obstacle = {}
 local obstacle_mt = { __index = obstacle }	-- metatable
