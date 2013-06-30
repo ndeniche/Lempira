@@ -20,7 +20,7 @@ new = function(params)
 	background.y = 383
 
 	local btnJugar = display.newImage("assets/images/btnJugar.png")
-	btnjugar.x = 512
+	btnJugar.x = 512
 	btnJugar.y = 383
 
 	menuDisplay:insert(background)
@@ -31,7 +31,7 @@ new = function(params)
 		return true
 	end
 
-	--btnJugar:addEventListener("touch", buttonListener)
+	btnJugar:addEventListener("touch", buttonListener)
 
 	return menuDisplay
 end
