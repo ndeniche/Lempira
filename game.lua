@@ -22,15 +22,17 @@ new = function(params)
 
 	local sceneLayer2 = display.newImage("assets/images/sceneLayer2.png")
 	sceneLayer2.x = 0
-	
-	local heroe = lempira.new("run")
 
-	--local legs = RunLegs(heroe)
+
+	local heroe = lempira.new("run")
+	local body = RunBody(heroe)
 
 	--legs:setSequence("normalRunLegs")
 	--legs:play()
 
-	--gameDisplay:insert(legs)	
+	gameDisplay:insert(body)
+	body:setSequence("normalRunLegs")
+	body:play()	
 	--sp:RunLegs()
 	--sp:RunBody()
 
@@ -51,22 +53,38 @@ new = function(params)
 end
 
 
---function RunLegs(lempira)
+function RunBody(lempira)
 
---	local runLegsImageSheet = lempira:runLegs() 
+	local options = {
+	   width = 238,
+	   height = 220,
+	   numFrames = 4,	   
+	   --sourceWidth=524, 
+	   --sourceHeight=447
+	   sourceWidth=476, 
+	   sourceHeight=440
+	}		
 
---	local sequenceData = {
---   	{ name = "normalRunLegs", start=1, count=4, time=100,   loopCount=0, loopDirection = "forward" },
---	{ name = "fastRunLegs", start=1, count=4, time=60,   loopCount=0, loopDirection = "forward" }
---	}
+	local runBodyImageSheet = graphics.newImageSheet("assets/images/characters/lempira_tronco.png", options)		
 
---	local runLegsSprite = display.newSprite( runLegsImageSheet, sequenceData )
---	runLegsSprite.x = 75
---	if (lempira:getState() == "run") 
---		then runLegsSprite.y = 30
---	end
+	local sequenceData = {
+   		{ name = "normalRunLegs", start=1, count=4, time=10},
+		{ name = "fastRunLegs", start=1, count=4, time=60}
+	}
+
+	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
+	
+	--spriteInstance:setReferencePoint(display.CenterLeftReferencePoint)	
+	spriteInstance.x = 512
+	spriteInstance.y = 383
+	--spriteInstance:play()
+	--local runLegsSprite = display.newSprite( runLegsImageSheet, sequenceData )
+	--runLegsSprite.x = 75
+	--if (lempira:getState() == "run") 
+	--	then runLegsSprite.y = 30
+	--end
 		
---	return runLegsSprite
---end
+	return spriteInstance
+end
 
 timer.performWithDelay(1, update, -1)

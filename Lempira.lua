@@ -1,7 +1,9 @@
 -------------------------------------------------
 -- Lempira.lua
 -------------------------------------------------
- 
+require("graphics")
+
+
 local Lempira = {}
 local lempira_mt = { __index = Lempira }	-- metatable
  
@@ -31,15 +33,8 @@ function Lempira:getState()
 	return self.state
 end
 ------------------------------------------------- 
-function Lempira:runBody()
-	local options = {
-	   width = 262,
-	   height = 233,
-	   numFrames = 4,
-	   sheetContentWidth=525, 
-	   sheetContentHeight=447
-	}
-	return graphics.newImageSheet( "assets/images/characters/lempira_tronco.png", options )
+function Lempira:runBody()	
+	return "assets/images/characters/lempira_tronco.png"
 end
 -------------------------------------------------
 function Lempira:runLegs()
