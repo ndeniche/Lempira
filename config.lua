@@ -8,7 +8,11 @@ application =
 	{
 		width = 768,
 		height = 1024,
-		scale = "zoomEven"
+		scale = "letterbox",
+		fps = 30,
+		antialias = false,
+		xalign = "center",
+		yalign = "center"
 	},
 }
 
