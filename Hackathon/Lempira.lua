@@ -18,14 +18,11 @@ end
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
  
-function lempira.new( body, rightArm, leftArm, rightLeg, leftLeg )	-- constructor
+function lempira.new( body, rightArm)	-- constructor
 		
 	local newLempira = {
 		body = body,
-		rightArm = rightArm,
-		leftArm = leftArm,
-		rightLeg = rightLeg,
-		leftLeg = leftLeg
+		rightArm = rightArm
 	}
 	
 	return setmetatable( newLempira, lempira_mt )
