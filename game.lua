@@ -12,7 +12,7 @@ module(..., package.seeall)
 
 local director = require("director")
 local lempira = require("Lempira")
---local sprite = require("sprite")
+local LempiraSprite = require("LempiraSprites")
 
 new = function(params)
 	local gameDisplay = display.newGroup()
@@ -25,16 +25,18 @@ new = function(params)
 
 
 	local heroe = lempira.new("run")
-	local body = RunBody(heroe)
+	local ls = LempiraSprite.new()
 
-	--legs:setSequence("normalRunLegs")
-	--legs:play()
+	--local body = RunBody(heroe)
+	local body = ls:RunBody(heroe)	
 
+	gameDisplay:insert(sceneLayer1)
+	gameDisplay:insert(sceneLayer2)
 	gameDisplay:insert(body)
+
 	body:setSequence("normalRunLegs")
 	body:play()	
-	--sp:RunLegs()
-	--sp:RunBody()
+
 
 	local function update(event)
 		updateSceneLayers()
@@ -65,24 +67,44 @@ function RunBody(lempira)
 	   sourceHeight=440
 	}		
 
-	local runBodyImageSheet = graphics.newImageSheet("assets/images/characters/lempira_tronco.png", options)		
+	local runBodyImageSheet = graphics.newImageSheet(lempira:getBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunLegs", start=1, count=4, time=10},
-		{ name = "fastRunLegs", start=1, count=4, time=60}
+   		{ name = "normalRunLegs", start=1, count=4, time=250},
+		{ name = "fastRunLegs", start=1, count=4, time=125}
+	}
+
+	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
+	
+	spriteInstance.x = 512
+	spriteInstance.y = 383	
+		
+	return spriteInstance
+end
+
+
+function RunLegs(lempira)
+
+	local options = {
+	   width = 262,
+	   height = 202.8,
+	   numFrames = 4,
+	   sheetContentWidth=517, 
+	   sheetContentHeight=407
+	}		
+
+	local runLegsImageSheet = graphics.newImageSheet("assets/images/characters/lempira_tronco.png", options)		
+
+	local sequenceData = {
+   		{ name = "normalRunLegs", start=1, count=4, time=250},
+		{ name = "fastRunLegs", start=1, count=4, time=125}
 	}
 
 	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
 	
 	--spriteInstance:setReferencePoint(display.CenterLeftReferencePoint)	
 	spriteInstance.x = 512
-	spriteInstance.y = 383
-	--spriteInstance:play()
-	--local runLegsSprite = display.newSprite( runLegsImageSheet, sequenceData )
-	--runLegsSprite.x = 75
-	--if (lempira:getState() == "run") 
-	--	then runLegsSprite.y = 30
-	--end
+	spriteInstance.y = 383	
 		
 	return spriteInstance
 end

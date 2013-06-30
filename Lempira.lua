@@ -33,26 +33,19 @@ function Lempira:getState()
 	return self.state
 end
 ------------------------------------------------- 
-function Lempira:runBody()	
+function Lempira:getBody()	
 	return "assets/images/characters/lempira_tronco.png"
 end
 -------------------------------------------------
-function Lempira:runLegs()
-	local options = {
-	   width = 262,
-	   height = 202.8,
-	   numFrames = 4,
-	   sheetContentWidth=517, 
-	   sheetContentHeight=407
-	}
-	return graphics.newImageSheet( "assets/images/characters/lempira_piernas.png", options )
+function Lempira:getLegs()	
+	return "assets/images/characters/lempira_piernas.png"
 end
 -------------------------------------------------
-function Lempira:jump()
+function Lempira:getJump()
 	print( " jump." )
 end
 -------------------------------------------------
-function Lempira:shoot()
+function Lempira:getShoot()
 	print( "shoot" )
 end
 -------------------------------------------------
