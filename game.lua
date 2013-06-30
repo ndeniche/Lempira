@@ -27,7 +27,7 @@ new = function(params)
 
 	local sceneLayer2 = display.newImage("assets/images/sceneLayer2.png")
 	sceneLayer2.x = 1024
-	sceneLayer2.y = 400
+	sceneLayer2.y = 440
 
 	local sceneLayer3 = display.newImage("assets/images/sceneLayer3.png")
 	sceneLayer3.x = 1024
@@ -35,7 +35,10 @@ new = function(params)
 
 	local sceneLayer4 = display.newImage("assets/images/sceneLayer4.png")
 	sceneLayer4.x = 1024
-	sceneLayer4.y = 768 - 40
+	sceneLayer4.y = 720
+
+	local pathDisplay = display.newGroup()
+	pathDisplay:insert(sceneLayer4)
 
 	local sceneLayer5 = display.newImage("assets/images/sceneLayer5.png")
 	sceneLayer5.x = 1024
@@ -76,6 +79,7 @@ new = function(params)
 	obstaculoDisplay:insert(sceneObs)
 
 	gameDisplay:insert(backgroundDisplay)
+	gameDisplay:insert(pathDisplay)
 	gameDisplay:insert(obstaculoDisplay)
 	gameDisplay:insert(lempiraDisplay)
 	gameDisplay:insert(frontDisplay)
@@ -92,11 +96,15 @@ new = function(params)
 			sceneObs.x = 1200
 			sceneObs.y = 600
 		end
+		frontDisplay:toFront()	
 	end
 
 	function updateSceneLayers()
 		sceneLayer1.x = sceneLayer1.x - (1)
 		sceneLayer2.x = sceneLayer2.x - (4)
+		sceneLayer4.x = sceneLayer4.x - (16)
+		
+
 		if(sceneObs ~= nil) then
 			sceneObs.x = sceneObs.x - 16
 			if(sceneObs.x < -200) then
@@ -116,11 +124,14 @@ new = function(params)
 			sceneLayer2.x = 1024
 		end
 
+		if(sceneLayer4.x < 0) then
+			sceneLayer4.x = 650
+		end
+
 		if(sceneLayer5.x < 0) then
-			sceneLayer5.x = 1024
+			sceneLayer5.x = 770
 		end	
 
-		frontDisplay:toFront()	
 	end
 
 	timer.performWithDelay(1, update, -1)
