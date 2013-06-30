@@ -20,17 +20,16 @@ end
  
 function obstacle.new( type )	-- constructor
 		
-	local newLempira = {
-		type = type,
-		
+	local newObstacle = {
+		type = type		
 	}
 	
-	return setmetatable( newLempira, lempira_mt )
+	return setmetatable( newObstacle, obstacle_mt )
 end
  
 -------------------------------------------------
  
-function lempira:destroy()
+function obstacle:destroy()
 	print( " detroy." )
 end
  
