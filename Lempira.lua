@@ -14,12 +14,10 @@ local lempira_mt = { __index = lempira }	-- metatable
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
  
-function lempira.new( body, rightArm, legs, state)	-- constructor
+function lempira.new(state)	-- constructor
 		
-	local newLempira = {
-		body = body,
-		rightArm = rightArm		
-		state = state or 'run' --States: run, jump, dead, 
+	local newLempira = {		
+		state = state or "run" --States: run, jump, dead, 
 	}
 	
 	return setmetatable( newLempira, lempira_mt )
