@@ -24,7 +24,7 @@ new = function(params)
 		return true
 	end
 
-	background:addEventlistener("touch", mapaEventListener)
+	background:addEventListener("touch", mapaEventListener)
 
 	return mapaDisplay
 
