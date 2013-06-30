@@ -2,8 +2,8 @@
 -- Lempira.lua
 -------------------------------------------------
  
-local lempira = {}
-local lempira_mt = { __index = lempira }	-- metatable
+local Lempira = {}
+local lempira_mt = { __index = Lempira }	-- metatable
  
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -14,24 +14,24 @@ local lempira_mt = { __index = lempira }	-- metatable
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
  
-function lempira.new(state)	-- constructor
+function Lempira.new(aState)	-- constructor
 		
 	local newLempira = {		
-		state = state or "run" --States: run, jump, dead, 
+		state = aState or "run" --States: run, jump, dead, 
 	}
 	
 	return setmetatable( newLempira, lempira_mt )
 end
 -------------------------------------------------
-function setState(state)
-	self.state = state
+function Lempira:setState(aState)
+	self.state = aState
 end
 ------------------------------------------------- 
-function getState()
+function Lempira:getState()
 	return self.state
 end
 ------------------------------------------------- 
-function lempira:runBody()
+function Lempira:runBody()
 	local options = {
 	   width = 262,
 	   height = 233,
@@ -42,7 +42,7 @@ function lempira:runBody()
 	return graphics.newImageSheet( "assets/images/characters/lempira_tronco.png", options )
 end
 -------------------------------------------------
-function lempira:runLegs()
+function Lempira:runLegs()
 	local options = {
 	   width = 262,
 	   height = 202.8,
@@ -53,13 +53,13 @@ function lempira:runLegs()
 	return graphics.newImageSheet( "assets/images/characters/lempira_piernas.png", options )
 end
 -------------------------------------------------
-function lempira:jump()
+function Lempira:jump()
 	print( " jump." )
 end
 -------------------------------------------------
-function lempira:shoot()
+function Lempira:shoot()
 	print( "shoot" )
 end
 -------------------------------------------------
  
-return lempira
+return Lempira

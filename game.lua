@@ -11,7 +11,7 @@
 module(..., package.seeall)
 
 local director = require("director")
-local lempira =  require("Lempira")
+local lempira = require("Lempira")
 --local sprite = require("sprite")
 
 new = function(params)
@@ -30,8 +30,7 @@ new = function(params)
 	--legs:setSequence("normalRunLegs")
 	--legs:play()
 
-	--gameDisplay:insert(legs)
-	print (heroe:getState())
+	--gameDisplay:insert(legs)	
 	--sp:RunLegs()
 	--sp:RunBody()
 
