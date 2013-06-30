@@ -5,6 +5,8 @@ local endY
  
 local xDistance  
 local yDistance  
+
+local game = require("game")
  
 function checkSwipeDirection()
 
@@ -19,9 +21,9 @@ function checkSwipeDirection()
                 end
         else 
                 if beginY > endY then
-                        print("swipe up")
+                    
                 else 
-                        --down
+                        game:jumpLempira()
                 end
         end
         

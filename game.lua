@@ -44,7 +44,7 @@ new = function(params)
 	sceneLayer5.x = 1024
 	sceneLayer5.y = 920
 
-	local heroe = lempira.new("run")	
+	heroe = lempira.new("run")	
 
 	local body = ls:RunBody(heroe)
 	local legs = ls:RunLegs(heroe)
@@ -134,7 +134,127 @@ new = function(params)
 
 	end
 
+	function jumpLempira()
+--		local state = heroe.getState()
+--		if(state == "run")
+--			heroe.setState("jump")	
+
+			lempiraDisplay:remove(body)
+			lempiraDisplay:remove(legs)
+
+			body = ls:JumpBody(heroe)
+			legs = ls:JumpLegs(heroe)
+
+			lempiraDisplay:insert(body)
+			lempiraDisplay:insert(legs)
+
+			body:setSequence("normalJumpBody")	
+			body:play()	
+
+			legs:setSequence("normalJumpLegs")
+			legs:play()
+
+			timer.performWithDelay(500, landLempira)
+--		end
+	end
+
+	function landLempira()
+		lempiraDisplay:remove(body)
+		lempiraDisplay:remove(legs)
+
+		body = ls:RunBody(heroe)
+		legs = ls:RunLegs(heroe)
+
+		lempiraDisplay:insert(body)
+		lempiraDisplay:insert(legs)
+
+		body:setSequence("normalRunBody")	
+		body:play()	
+
+		legs:setSequence("normalRunLegs")
+		legs:play()
+	end
+
 	timer.performWithDelay(1, update, -1)
+
+	local beginX 
+	local beginY  
+	local endX  
+	local endY 
+	 
+	local xDistance  
+	local yDistance  
+
+	local rectOverlay = display.newRect(0, 0, 1024, 768)
+	rectOverlay.alpha = 0
+	rectOverlay.isHitTestable = true
+
+	rectOverlay:addEventListener("touch", 
+		function(event)
+			if event.phase == "began" then
+	                beginX = event.x
+	                beginY = event.y
+	        end
+--	        
+	        if event.phase == "ended"  then
+	                endX = event.x
+	                endY = event.y
+	                checkSwipeDirection();
+	        end
+		end
+		)
+--	rectOverlay:addEventListener("collision", OnCollision
+	 
+	function checkSwipeDirection()
+
+	        xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value. 
+	        yDistance =  math.abs(endY - beginY)
+	        
+	        if xDistance > yDistance then
+--	                if beginX > endX then
+--	                        --left
+--	                else 
+--	                        --right
+--	                end
+	        else 
+	                if beginY > endY then
+	                    
+	                else 
+	                        jumpLempira()
+	                end
+	        end
+--	        
+	end
+	 
+--	 
+	function jump(event)
+--	        if event.phase == "began" then
+--	                beginX = event.x
+--	                beginY = event.y
+--	        end
+--	        
+--	        if event.phase == "ended"  then
+--	                endX = event.x
+--	                endY = event.y
+--	                checkSwipeDirection();
+--	        end
+	end
+--	 
+--
+	function OnCollision( event ) 
+--	        if (event.phase == "began") then
+--	                if ((event.Object1.name == "Lempira" || event.Object1.name == "Cacao")&&(event.Object2.name == "Lempira" || event.Object2.name == "Cacao")) then
+--	                score:cacaoPoint()
+--	                elseif ((event.Object1.name == "Lempira" || event.Object1.name == "Tortilla")&&(event.Object2.name == "Lempira" || event.Object2.name == "Tortilla")) then
+--	                        score:tortillaPoint()
+--	                        elseif ((event.Object1.name == "Lempira" || event.Object1.name == "Obstacle")&&(event.Object2.name == "Lempira" || event.Object2.name == "Obstacle")) then
+--	                         end
+--	                end
+--	        end
+	end
+--
+
+
 
 	return gameDisplay
 end

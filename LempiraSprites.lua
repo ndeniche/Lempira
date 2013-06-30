@@ -72,21 +72,21 @@ function LempiraSprites:JumpLegs(lempira)
 	   width = 262,
 	   height = 233,
 	   numFrames = 3,
-	   sheetContentWidth=524, 
-	   sheetContentHeight=466
+	   sheetContentWidth=786, 
+	   sheetContentHeight=234
 	}		
 
 	local jumpLegsImageSheet = graphics.newImageSheet(lempira:getJumpLegs(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpLegs", start=1, count=3, time=350},
+   		{ name = "normalJumpLegs", start=1, count=3, time=500},
 		{ name = "fastJumpLegs", start=1, count=3, time=125}
 	}
 
 	local spriteInstance = display.newSprite(jumpLegsImageSheet, sequenceData)
 	
 	spriteInstance.x = posicionx
-	spriteInstance.y = 383	
+	spriteInstance.y = 445	
 		
 	return spriteInstance
 end
@@ -99,21 +99,21 @@ function LempiraSprites:JumpBody(lempira)
 	   width = 262,
 	   height = 233,
 	   numFrames = 3,
-	   sheetContentWidth=524, 
-	   sheetContentHeight=466
+	   sheetContentWidth=786, 
+	   sheetContentHeight=234
 	}		
 
 	local jumpBodyImageSheet = graphics.newImageSheet(lempira:getJumpBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpBody", start=1, count=3, time=350},
+   		{ name = "normalJumpBody", start=1, count=3, time=500},
 		{ name = "fastJumpBody", start=1, count=3, time=125}
 	}
 
 	local spriteInstance = display.newSprite(jumpBodyImageSheet, sequenceData)
 	
 	spriteInstance.x = posicionx
-	spriteInstance.y = 383	
+	spriteInstance.y = 284	
 		
 	return spriteInstance
 end
