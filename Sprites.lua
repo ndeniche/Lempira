@@ -3,7 +3,7 @@
 -------------------------------------------------
  
 local sprites = {}
-local sprites_mt = { __index = sprites }  -- metatable
+local sprites_mt = { __index = sprites }	-- metatable
  
 -------------------------------------------------
 --Lempira Legs Running
@@ -12,19 +12,17 @@ function RunLegs(lempira)
 	local runLegsSprite = lempira:runLegs() 
 
 	local sequenceData = {
-   	{ name = "runLegs1", start=1, count=1, time=0,   loopCount=1 },
-  	{ name = "runLegs2", start=1, count=2, time=100, loopCount=1 },
-   	{ name = "runLegs3", start=1, count=3, time=200, loopCount=1 },
-   	{ name = "runLegs4", start=1, count=4, time=300, loopCount=1 },
-
+   	{ name = "normalRunLegs", start=1, count=4, time=100,   loopCount=0, loopDirection = "forward" },
+	{ name = "fastRunLegs", start=1, count=4, time=60,   loopCount=0, loopDirection = "forward" },
+	
 	local runLegsSprite = display.newSprite( runLegsSprite, sequenceData )
 		runLegsSprite.x = 75
 		if (lempira.getState == "run") 
 			then runLegsSprite.y = 30
 		end
 		lempiraBody:insert( runLegsSprite )  --"lempiraBody" is a display group
-
-		runLegsSprite.setSequence()
+		
+		runLegsSprite.setSequence("runBody4")
 		runLegsSprite.play()
 end
 
@@ -35,10 +33,8 @@ function RunBody(Lempira)
 	local runBodySprite = lempira:runBody() 
 
 	local sequenceData = {
-   	{ name = "runBody1", start=1, count=1, time=0,   loopCount=1 },
-  	{ name = "runBody2", start=1, count=2, time=100, loopCount=1 },
-   	{ name = "runBody3", start=1, count=3, time=200, loopCount=1 },
-   	{ name = "runBody4", start=1, count=4, time=300, loopCount=1 },
+   	{ name = "normalRunBody", start=1, count=4, time=100,   loopCount=0, loopDirection = "forward" },
+	{ name = "fastRunBody", start=1, count=4, time=60,   loopCount=0, loopDirection = "forward" },
 
 	local runBodySprite = display.newSprite( runBodySprite, sequenceData )
 		runBodySprite.x = 75
@@ -47,7 +43,7 @@ function RunBody(Lempira)
 		end
 		lempiraBody:insert( runBodySprite )  --"lempiraBody" is a display group
 
-		runBodySprite.setSequence()
+		runBodySprite.setSequence("runBody4")
 		runBodySprite.play()
 end
 
@@ -58,10 +54,8 @@ function ThrowBody(Lempira)
 	local throwBodySprite = lempira.throwBody() 
 
 	local sequenceData = {
-   	{ name = "throwBody1", start=1, count=1, time=0,   loopCount=1 },
-  	{ name = "throwBody2", start=1, count=2, time=100, loopCount=1 },
-   	{ name = "throwBody3", start=1, count=3, time=200, loopCount=1 },
-   	{ name = "throwBody4", start=1, count=4, time=300, loopCount=1 },
+   		{ name = "normalThrowBody", start=1, count=4, time=100,   loopCount=0, loopDirection = "forward" },
+	{ name = "fastThrowBody", start=1, count=4, time=60,   loopCount=0, loopDirection = "forward" },
 
 	local throwBodySprite = display.newSprite( throwBodySprite, sequenceData )
 		throwBodySprite.x = 75
@@ -69,7 +63,8 @@ function ThrowBody(Lempira)
 			then throwBodySprite.y = 30
 		end
 		lempiraBody:insert( throwBodySprite )  --"lempiraBody" is a display group
-		
-		throwBodySprite.setSequence()
+
+		throwBodySprite.setSequence("throwBody4")
 		throwBodySprite.play()
 end
+
