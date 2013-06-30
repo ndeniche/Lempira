@@ -8,9 +8,12 @@
 
 module(..., package.seeall)
 
+--Requires
 local director = require("director")
 local lempira = require("Lempira")
 local ls = require("LempiraSprites")
+local obs = require("Obstacle")
+-------------------------------------
 
 new = function(params)
 
@@ -38,6 +41,15 @@ new = function(params)
 	legs:setSequence("normalRunLegs")
 	legs:play()
 
+	
+	--Create Obstacles
+	local obstacle = obs.new("maya")	
+	local sceneObs = display.newImage(obstacle:rndObstacle())
+	sceneObs.x = 900
+	sceneObs.y = 600
+	gameDisplay:insert(sceneObs)
+
+
 	local function update(event)
 		updateSceneLayers()
 	end
@@ -53,6 +65,5 @@ new = function(params)
 
 	return gameDisplay
 end
-
 
 timer.performWithDelay(1, update, -1)

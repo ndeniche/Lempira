@@ -61,5 +61,4 @@ function LempiraSprites:RunBody(lempira)
 	return spriteInstance
 end
 
-
 return LempiraSprites

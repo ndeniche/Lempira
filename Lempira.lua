@@ -1,30 +1,38 @@
 -------------------------------------------------
 -- Lempira.lua
 -------------------------------------------------
-require("graphics")
-
-
 local Lempira = {}
 local lempira_mt = { __index = Lempira }	-- metatable
- 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
- 
 -------------------------------------------------
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
- 
 function Lempira.new(aState)	-- constructor
 		
-	local newLempira = {		
-		state = aState or "run" --States: run, jump, dead, 
+	local newLempira = {
+		name = "Lempira",		
+		state = aState or "run", --States: run, jump, dead, 
+		weapon = "piedra"
 	}
 	
 	return setmetatable( newLempira, lempira_mt )
 end
 -------------------------------------------------
+function Lempira:getName()
+	return self.name
+end
+------------------------------------------------- 
+function Lempira:setWeapon(aWeapon)
+	self.weapon = aWeapon
+end
+------------------------------------------------- 
+function Lempira:getWepon()
+	return self.weapon
+end
+------------------------------------------------- 
 function Lempira:setState(aState)
 	self.state = aState
 end
@@ -45,8 +53,10 @@ function Lempira:getJump()
 	return "assets/images/characters/lempira_salta.png"
 end
 -------------------------------------------------
-function Lempira:getShoot()
-	print( "shoot" )
+function Lempira:getHit()
+	if (self.weapon == "piedra") then
+		return "assets/images/characters/lempira_golpe_piedra.png"
+	end
 end
 -------------------------------------------------
  

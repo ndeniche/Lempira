@@ -1,12 +1,10 @@
 -------------------------------------------------
 -- Obstacle.lua
 -------------------------------------------------
-require("mathlib")
+--require("mathlib")
  
-local obstacle = {}
-local obstacle_mt = { __index = obstacle }	-- metatable
- 
-
+local Obstacle = {}
+local obstacle_mt = { __index = Obstacle }	-- metatable
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
@@ -14,36 +12,37 @@ local obstacle_mt = { __index = obstacle }	-- metatable
 -------------------------------------------------
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
-function obstacle.new( type )	-- constructor
+function Obstacle.new( atype )	-- constructor
 		
 	local newObstacle = {
-		--maya, playa, montana, tegus
-		type = type	or "maya"
-
-		if type == "maya" then
-			number = math.random(1, 7)
-			item = display.newImage("assets/images/obstacles/maya" + number + ".png", 792, 612)	
-		end		
+		name = "Obstacle",		
+		type = atype,	--maya, playa, montana, tegus
+		number = math.random(1, 7),
+		item = "assets/images/obstacles/maya" .. tostring(number) .. ".png"	
 	}
 	
 	return setmetatable( newObstacle, obstacle_mt )
 end
 -------------------------------------------------
-function obstacle:getType()
+function Obstacle:getName()
+	return self.name
+end
+-------------------------------------------------
+function Obstacle:getType()
 	return self.type
 end
 -------------------------------------------------
-function obstacle:setType(type)
-	self.type = type
+function Obstacle:setType(atype)
+	self.type = atype
 end
 -------------------------------------------------
-function obstacle:rndObstacle()
-	if type == "maya" then
-			number = math.random(1, 7)
-			item = display.newImage("assets/images/obstacles/maya" + number + ".png", 792, 612)	
+function Obstacle:rndObstacle()
+	if (self.type == "maya") then
+		self.number = math.random(1, 7)
+		self.item = "assets/images/obstacles/maya" .. tostring(self.number) .. ".png"	
 	end
-	return item	
+	return self.item	
 end
 -------------------------------------------------
 
-return obstacle
+return Obstacle
