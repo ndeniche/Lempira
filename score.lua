@@ -1,4 +1,5 @@
 
+
 -------------------------------------------------
 -- Score.lua
 -------------------------------------------------
@@ -49,7 +50,7 @@ end
 
 
 
-function distanciaPoint()
+function score:distanciaPoint()
 -- Updates distance based on blocks passed
 	self.distancia = self.distancia + 1
 	distanciaText.Text = (" " ..self.distancia)
@@ -62,7 +63,7 @@ end
 -------------------------------------------------------------
 -- Function to pass each time player collides with a tortilla
 
-function tortillaPoint()
+function score:tortillaPoint()
 	if (self.tortilla <= 4) then
 		self.tortilla = self.tortilla + 1
 		updateTortillaImage(self.tortilla)
@@ -72,15 +73,16 @@ end
 
 -------------------------------------------------------------
 --Function to pass each time player collides with a cacao
-function cacaoPoint()
+function score:cacaoPoint()
 	self.cacao = self.cacao + 1
+	cacaoText.text =  ..self.cacao
 end
 
 
 
 -------------------------------------------------------------
 -- Function called to update and display image of tortilla stack
-function updateTortillaImage(tortilla)
+function score:updateTortillaImage(tortilla)
 
 	local tortillaIndicador
 	if (tortilla == 0)
@@ -107,27 +109,27 @@ end
 --------------------------------------------------------------
 --Get and Set Functions
 
-function getTortillaPoints
+function score:getTortillaPoints()
 	return self.tortilla
 end
 
-function setTortillaPoints(tortillaPt)
+function score:setTortillaPoints(tortillaPt)
 	self.tortilla = tortillaPt
 end
 
-function getCacaoPoints
+function score:getCacaoPoints()
 	return self.cacao
 end
 
-function setCacaoPoints(cacaoPt)
+function score:setCacaoPoints(cacaoPt)
 	self.cacao = cacaoPt
 end
 
-function getDistancia
+function score:getDistancia()
 	return self.distancia
 end
 
-function setDistancia (distanciaPt)
+function score:setDistancia (distanciaPt)
 	self.distancia = distanciaPt
 end
 
