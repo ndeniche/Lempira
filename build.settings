@@ -1,0 +1,10 @@
+-- build.settings for project: Lempira
+-- Managed with http://CoronaProjectManager.com
+-- Copyright 2013 . All Rights Reserved.
+
+settings = {
+	orientation =
+	{
+		default = "landscapeRight",		supported = {"landscapeLeft", "landscapeRight"},
+	},
+}
