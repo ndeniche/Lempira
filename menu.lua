@@ -15,23 +15,18 @@ local director = require("director")
 new = function(params)
 	local menuDisplay = display.newGroup()
 
-	local background = display.newImage("assets/images/backgroundMenu.png")
+	local background = display.newImage("assets/images/backgroundMenu.jpg")
 	background.x = 512
 	background.y = 383
 
-	local btnJugar = display.newImage("assets/images/btnJugar.png")
-	btnJugar.x = 512
-	btnJugar.y = 383
-
 	menuDisplay:insert(background)
-	menuDisplay:insert(btnJugar)
 
 	local function buttonListener(event)
 		director:changeScene("mapa", "downFlip")
 		return true
 	end
 
-	btnJugar:addEventListener("touch", buttonListener)
+	background:addEventListener("touch", buttonListener)
 
 	return menuDisplay
 end

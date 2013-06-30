@@ -5,6 +5,9 @@ require("Lempira")
 
 local LempiraSprites = {}
 local sprites_mt = { __index = LempiraSprites }	-- metatable
+
+local posicionx = 320
+local velocidadInicial = 350
  
 -------------------------------------------------
 
@@ -22,13 +25,13 @@ function LempiraSprites:RunLegs(lempira)
 	local runLegsImageSheet = graphics.newImageSheet(lempira:getLegs(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunLegs", start=1, count=4, time=250},
+   		{ name = "normalRunLegs", start=1, count=4, time=350},
 		{ name = "fastRunLegs", start=1, count=4, time=125}
 	}
 
 	local spriteInstance = display.newSprite(runLegsImageSheet, sequenceData)
 		
-	spriteInstance.x = 512
+	spriteInstance.x = posicionx
 	spriteInstance.y = 545	
 		
 	return spriteInstance
@@ -49,13 +52,13 @@ function LempiraSprites:RunBody(lempira)
 	local runBodyImageSheet = graphics.newImageSheet(lempira:getBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalRunBody", start=1, count=4, time=250},
+   		{ name = "normalRunBody", start=1, count=4, time=350},
 		{ name = "fastRunBody", start=1, count=4, time=125}
 	}
 
 	local spriteInstance = display.newSprite(runBodyImageSheet, sequenceData)
 	
-	spriteInstance.x = 512
+	spriteInstance.x = posicionx
 	spriteInstance.y = 383	
 		
 	return spriteInstance
@@ -76,13 +79,13 @@ function LempiraSprites:JumpLegs(lempira)
 	local jumpLegsImageSheet = graphics.newImageSheet(lempira:getJumpLegs(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpLegs", start=1, count=3, time=250},
+   		{ name = "normalJumpLegs", start=1, count=3, time=350},
 		{ name = "fastJumpLegs", start=1, count=3, time=125}
 	}
 
 	local spriteInstance = display.newSprite(jumpLegsImageSheet, sequenceData)
 	
-	spriteInstance.x = 512
+	spriteInstance.x = posicionx
 	spriteInstance.y = 383	
 		
 	return spriteInstance
@@ -103,13 +106,13 @@ function LempiraSprites:JumpBody(lempira)
 	local jumpBodyImageSheet = graphics.newImageSheet(lempira:getJumpBody(), options)		
 
 	local sequenceData = {
-   		{ name = "normalJumpBody", start=1, count=3, time=250},
+   		{ name = "normalJumpBody", start=1, count=3, time=350},
 		{ name = "fastJumpBody", start=1, count=3, time=125}
 	}
 
 	local spriteInstance = display.newSprite(jumpBodyImageSheet, sequenceData)
 	
-	spriteInstance.x = 512
+	spriteInstance.x = posicionx
 	spriteInstance.y = 383	
 		
 	return spriteInstance
