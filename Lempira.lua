@@ -49,8 +49,12 @@ function Lempira:getLegs()
 	return "assets/images/characters/lempira_piernas.png"
 end
 -------------------------------------------------
-function Lempira:getJump()
-	return "assets/images/characters/lempira_salta.png"
+function Lempira:getJumpLegs()
+	return "assets/images/characters/lempira_salto_piernas.png"
+end
+-------------------------------------------------
+function Lempira:getJumpBody()
+	return "assets/images/characters/lempira_salto_tronco.png"
 end
 -------------------------------------------------
 function Lempira:getHit()
