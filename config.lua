@@ -11,8 +11,8 @@ application =
 		scale = "letterbox",
 		fps = 30,
 		antialias = false,
-		xalign = "center",
-		yalign = "center"
+		xalign = "left",
+		yalign = "left"
 	},
 }
 
