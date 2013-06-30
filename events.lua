@@ -41,4 +41,18 @@ function jump(event)
         end
 end
  
+
+function OnCollision( event ) 
+        if (event.phase == "began") then
+                if ((event.Object1.name == "Lempira" || event.Object1.name == "Cacao")&&(event.Object2.name == "Lempira" || event.Object2.name == "Cacao")) then
+                score:cacaoPoint()
+                elseif ((event.Object1.name == "Lempira" || event.Object1.name == "Tortilla")&&(event.Object2.name == "Lempira" || event.Object2.name == "Tortilla")) then
+                        score:tortillaPoint()
+                        elseif ((event.Object1.name == "Lempira" || event.Object1.name == "Obstacle")&&(event.Object2.name == "Lempira" || event.Object2.name == "Obstacle")) then
+                         end
+                end
+        end
+end
+
 Runtime:addEventListener("touch", jump)
+Runtime:addEventListener("collision", OnCollision)
